@@ -88,13 +88,9 @@ The following table lists the available configurations for the board's serial co
 | Mode of Serial Operation | SW1 | SW2 | SW3 | SW4 | SW5 | SW6 | SW7 | SW8 |
 |--------------------------|-----|-----|-----|-----|-----|-----|-----|-----|
 | Upload Sketch to ESP8266 | OFF | OFF | OFF | OFF | ON  | ON  | ON  | N/A | 
-|--------------------------|-----|-----|-----|-----|-----|-----|-----|-----|
 | Serial Port to ESP8266   | OFF | OFF | OFF | OFF | ON  | ON  | OFF | N/A |
-|--------------------------|-----|-----|-----|-----|-----|-----|-----|-----|
 | Upload Sketch to ATMega  | OFF | OFF | ON  | ON  | OFF | OFF | OFF | N/A |
-|--------------------------|-----|-----|-----|-----|-----|-----|-----|-----|
 | ESP8266 to ATMega        | ON  | ON  | OFF | OFF | OFF | OFF | OFF | N/A |
-|--------------------------|-----|-----|-----|-----|-----|-----|-----|-----|
 | All Chips Independent    | OFF | OFF | OFF | OFF | OFF | OFF | OFF | N/A |
 
 
