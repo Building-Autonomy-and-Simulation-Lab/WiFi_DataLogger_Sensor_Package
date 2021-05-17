@@ -31,6 +31,8 @@ The following hardware is necessary to set up the network and connect one node:
 - (1) Gravity Infrared CO2 Sensor
 - (1) Plantower PMS5003 Particle Concentration Sensor
 - (1) Si7021 Temperature and Humidity Sensor
+- (1) MicroSD Card Driver Module
+- (1) MicroSD Card <= 16GB
 - Solid core wires
 - Solder
 
@@ -44,8 +46,7 @@ For acquiring accurate timestamps and for MQTT capabilities
 ### Hardware setup <a name="necessarytools"></a>
 
 The following image illustrates the necessary wire connections for the sensor package:
-todo include image.
-
+![Sensor Package Wiring](/images/sensor_package_wiring.png)
 
 ### Network setup <a name="networksetup"></a>
 
@@ -66,13 +67,12 @@ The following table documents the cost of the core of the network - the Ethernet
 
 | Component                                                                   | Price   |
 |-----------------------------------------------------------------------------|---------|
-| [Arduino Uno]                                   | $3.05  |
-|  [Proto Shield with Mini Breadboard]              | $1.10   |
-| [RFM69HCW Wireless Transciever - 915MHz (4 pack)] | $2.15  |
-| [10Kohm Resistor (100-pack)]                 | $0.69   |
-| [9V 1A Arduino Power Supply]                     | $2.08   |
-| [Voltage/logic converter]                        | $0.28   |
+| [Arduino Uno + Wifi]("https://www.amazon.com/dp/B0834JQ5Y5?ref_=pe_1815430_211938580")                                  | $11.99 |
+| [Gravity: Analog Infrared CO2 Sensor]("https://www.dfrobot.com/product-1549.html") | $2.15  |
+| [PM2.5 Air Quality Sensor]("https://www.adafruit.com/product/3686")                 | $0.69   |
+| [Si7021 Temperature & Humidity Sensor]("https://www.adafruit.com/product/3251")                     | $2.08   |
 | [Solid core wire]                          | $0.48  |
+| [MicroSD Card Driver Module (5pcs)]("https://www.amazon.com/Adapter-Reader-interface-driver-Arduino/dp/B01MSNX0TW/") | $9.28 |
 | Total (+ shipping)                                               | $13.67 |
 
 
