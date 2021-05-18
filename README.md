@@ -2,7 +2,7 @@
 
 The exponential growth of wireless communications markets around the world has allowed users from all corners of the globe to share data almost instantaneously. However, managing the collection and transmission of data from multiple devices connected in small, confined networks presents major challenges. The futuristic ideal of having millions of interconnected "things" (inanimate objects, devices, communities, and environments) that have the ability to sense, communicate, network, and produce mass amounts of data that can be utilized in a novel way is known as the Internet of Things (IoT). Automation, environmental analysis, and health and safety awareness are large areas of study that can benefit from IoT networks, but issues with compatibility, versatility, and cost inhibit implementation of such networks.
 
-The purpose of this project is to create an inexpensive, robust, low-power IoT sensor network to serve as an easily implementable model for individuals, communities, and cities. Additionally, the network can serve as a tool within other areas of research for experimentation and QA analysis. The foundation of this system was successfully created using Arduino-based processing in tandem with packet radios that communicate over sub-GHz frequency bands. Ethernet data packet management was done using MQ Telemetry Transport (MQTT) and data visualization was performed with Grafana and MATLAB. This network also utilizes InfluxDB to store and manage data effectively.
+The purpose of this project is to create an inexpensive, robust, low-power IoT sensor network to serve as an easily implementable model for individuals, communities, and cities. Additionally, the network can serve as a tool within other areas of research for experimentation and QA analysis. Wireless data packet management was done using MQ Telemetry Transport (MQTT).
 
 
 ## Contents
@@ -72,7 +72,7 @@ Below are the steps to initialize the server, gateway and one sensor node.
 
    Instructions on how to set up the MQTT server will be written soon.
 
-### Uploading Sketches <a name="uploadsketches></a>
+### Uploading Sketches <a name="uploadsketches"></a>
 
 As implied by the name of the board, this board allows one to upload sketches to two seperate microcontrollers - the ESP8266 and the ATMega328p (Arduino Uno) chips. The ESP8266 handles all WiFi communications and processes whereas the ATMega328p handles regular sensor processes as commonly done by the Arduino Uno. The board employs the CH340G USB-TTL converter in combination with dipswitches to allow one to configure how each chip's serial communications should operate.
 
@@ -160,24 +160,12 @@ The following table documents the cost of the core of the network - the Ethernet
 
 | Component                                                                   | Price   |
 |-----------------------------------------------------------------------------|---------|
-| [Arduino Uno + Wifi](https://www.amazon.com/dp/B0834JQ5Y5?ref_=pe_1815430_211938580)                                  | $11.99 |
-| [Gravity: Analog Infrared CO2 Sensor]("https://www.dfrobot.com/product-1549.html) | $2.15  |
-| [PM2.5 Air Quality Sensor](https://www.adafruit.com/product/3686)                 | $0.69   |
-| [Si7021 Temperature & Humidity Sensor](https://www.adafruit.com/product/3251)                     | $2.08   |
+| [Arduino Uno + Wifi](https://www.amazon.com/dp/B0834JQ5Y5?ref_=pe_1815430_211938580) | $11.99 |
+| [Gravity: Analog Infrared CO2 Sensor](https://www.dfrobot.com/product-1549.html)    | $58.00  |
+| [PM2.5 Air Quality Sensor](https://www.adafruit.com/product/3686)                    | $39.95   |
+| [Si7021 Temperature & Humidity Sensor](https://www.adafruit.com/product/3251)        | $9.95   |
 | [MicroSD Card Driver Module (5pcs)](https://www.amazon.com/Adapter-Reader-interface-driver-Arduino/dp/B01MSNX0TW/) | $9.28 |
-| Total (+ shipping)                                               | $13.67 |
-
-
-
-The final table documents how cost scales as _n_ nodes are added to the network.
-
-| Nodes | Cost      |
-|-------|-----------|
-| 1     | $13.67    |
-| 10    | $106.28   |
-| 100   | $1210.18  |
-| 500   | $6893.38  |
-
+| Total (exlcuding shipping)                                               | $129.17 |
 
 ## Releases <a name="releases"></a>
 Not currently released.
