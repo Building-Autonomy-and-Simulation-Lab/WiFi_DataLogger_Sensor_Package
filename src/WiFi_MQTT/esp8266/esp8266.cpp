@@ -10,13 +10,11 @@ IPAddress gateway(192, 168, 0, 1);
 IPAddress subnet(255, 255, 255, 0);
 IPAddress primaryDNS(8, 8, 8, 8);
 IPAddress secondaryDNS(8, 8, 4, 4);
-IPAddress MQTTbroker(192, 168, 0, 220);
+IPAddress MQTTbroker(192, 168, 0, 190);
 
 // For timestamp
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-char GLOBAL_TIMESTAMP[60];
-char DATE[10];
-char TIME[15];
+char TIMESTAMP[25];
 
 // Define NTP Client to get time
 WiFiUDP ntpUDP;
@@ -30,7 +28,6 @@ PubSubClient MQTTclient(espClient);
 char TOPIC_MSG[MSG_BUFFER_SIZE];
 char *TOPIC;
 char *TOPIC_DATA;
-
 
 void setup()
 {
@@ -47,12 +44,19 @@ void setup()
     //MQTTclient.setCallback(callback); /* function to handle subscription updates */
 #endif
     digitalWrite(ERR_LED, LOW);
-    Serial.print("done!\n");
+    char s_buff[5];
+    while (1){
+        Serial.print("done!\n");
+        int bytes_read = Serial.readBytesUntil('\n', s_buff, 4);
+        s_buff[bytes_read] = '\0';
+        if (!strcmp(s_buff, ARDUINO_RDY))
+            break;
+    }
 }
 
 void loop()
 {
-    timeClient.update(); /* updates the time based on an interval (see .h file for settings) */
+    timeClient.update(); /* updates the time based on an interval (see esp8266.h for settings) */
 #ifdef MQTT_ON
     if (!MQTTclient.connected()) /* connection broken? */
          reconnect_to_broker();
@@ -61,7 +65,7 @@ void loop()
     if (Serial.available() > 0) /* is data is available from Arduino? */
     {
         char s_buff[100];
-        int bytes_read = Serial.readBytesUntil('\n', s_buff, 99); /* read arduino data from serial port */
+        int bytes_read = Serial.readBytesUntil('\n', s_buff, sizeof(s_buff) - 1); /* read arduino data from serial port */
         s_buff[bytes_read] = '\0';
         if (!strcmp(s_buff, TIMESTAMP_REQUEST)){
             set_timestamp();
@@ -158,9 +162,9 @@ int get_topic_and_topic_msg(char *ser_data)
     else
     {
         if (strcmp(TOPIC, "error_messages") == 0){
-            sprintf(TOPIC_MSG, "%s %s %s", ser_data, TIME, DATE);
+            snprintf(TOPIC_MSG, sizeof(TOPIC_MSG), "%s - %s", TIMESTAMP, ser_data);
         } else {
-            sprintf(TOPIC_MSG, "%s %s %s", TOPIC_DATA, TIME, DATE); /* put a timestamp on data */
+            snprintf(TOPIC_MSG, sizeof(TOPIC_MSG), "%s - %s", TIMESTAMP, TOPIC_DATA); /* put a timestamp on data */
         }
         return 1;
     }
@@ -168,24 +172,13 @@ int get_topic_and_topic_msg(char *ser_data)
 
 void set_timestamp()
 {
-    sprintf(TIME, "%s", timeClient.getFormattedTime().c_str());
-    sprintf(DATE, "%s", timeClient.getFormattedDate().c_str());
+    memset(TIMESTAMP, 0, sizeof(TIMESTAMP));
+    sprintf(TIMESTAMP, "%s %s", timeClient.getFormattedDate().c_str(), timeClient.getFormattedTime().c_str());
 }
 
 void print_timestamp()
 {
-   print_date();
-   print_time(); 
-}
-
-void print_date(){
-    Serial.print(DATE);
-    Serial.print('\n');
-    Serial.flush();
-}
-
-void print_time(){
-    Serial.print(TIME);
+    Serial.print(TIMESTAMP);
     Serial.print('\n');
     Serial.flush();
 }

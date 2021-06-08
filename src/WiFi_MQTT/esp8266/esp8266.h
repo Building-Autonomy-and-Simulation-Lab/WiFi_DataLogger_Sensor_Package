@@ -6,12 +6,13 @@
 #define ARDUINO_RX 2
 #define ARDUINO_TX 4
 #define TIMESTAMP_REQUEST "t"
+#define ARDUINO_RDY "k"
 //#define MQTT_ON /* uncomment to enable MQTT communication */
 //#define DEBUG /* uncomment for debug prints */
 
 /* WiFi settings */
-#define SSID "Inty-plus"
-#define SSID_PW "U5t\\<a%>q=ikhwLY"
+#define SSID "the-name-of-the-wifi-network"
+#define SSID_PW "wifi-passowrd"
 #define HOSTNAME "ESP8266-1"
 
 /* prototypes */

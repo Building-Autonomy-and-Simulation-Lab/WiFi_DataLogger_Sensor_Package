@@ -1,13 +1,14 @@
 /* constants */
 #define NETWORK_ID "DHN/0/0"
-#define DONE "done!"
+#define ERR_TOPIC "err"
 #define ERRLED 7
 #define TESTLED 5
-#define TIMESTAMP_BUFFER 30
+#define TIMESTAMP_BUFFER 25
 #define DATA_BUFFER 100
 #define REQUEST_TIMESTAMP "t\n"
 #define ESP8266_READY "done!"
-#define CO2_PIN A5
+#define CO2_PIN A0
+#define ARDUINO_RDY "k"
 //#define MQTT_ON /* uncomment to enable publishing to MQTT topics */
 
 /* prototypes */
