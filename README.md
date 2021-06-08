@@ -19,6 +19,7 @@ The purpose of this project is to create an inexpensive, robust, low-power IoT s
     - [Uploading a Sketch to the ESP8266](#uploadesp)
     - [Uploading a Sketch to the ATMega](#uploadatmega)
   - [Running the Sensor Package](#runpackage)
+    - [WiFi Configuration](#wificonfig)
 - [Research Analysis](#ra)
   - [Cost Scaling](#cost)
 - [Releases](#releases)
@@ -153,6 +154,23 @@ Finally, click the upload button and wait until the sketch is uploaded before di
 Before the sensor package can be ran, the sketches for the ESP8266 and the ATMega chips must be uploaded as described in the [Uploading Sketches](#uploadsketches) section. Once the sketches are uploaded, the board must be configured in the [ESP8266 to ATMega](#serialmodes) serial communication mode as each chip must communicate with each other.
 
 Once the board is properly configured, the board will power on and begin operation. Note that you may need to press the MCU reset button each time the board is connected to a power source.
+
+#### WiFi Configuration <a name="wificonfig"></a>
+
+The main funciton of this sensor package is to collect and timestamp data from its supported sensors. For timestamping to work without need for manual synchronization, the Network Time Protocol (NTP) is used. This protocol allows for synchronization of clocks via the Internet.
+
+To use NTP, we must first be connected to the Internet. Edit these two lines in the src/WiFi_MQTT/esp8266/esp8266.h file to connect to the Internet:
+
+```
+#define SSID "the-name-of-the-wifi-network"
+#define SSID_PW "wifi-passowrd"
+```
+
+To assign a static IP address to the sensor package, change the following line in the src/WiFi_MQTT/esp8266/esp8266.cpp file:
+
+```
+IPAddress staticIP(192, 168, 0, 68);
+```
 
 ## Research Analysis <a name="ra"></a>
 ### Cost Scaling <a name="cost"></a>
