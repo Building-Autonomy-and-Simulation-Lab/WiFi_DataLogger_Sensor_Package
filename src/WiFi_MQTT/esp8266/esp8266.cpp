@@ -145,7 +145,7 @@ void reconnect_to_broker()
 int get_topic_and_topic_msg(char *ser_data)
 {
 
-    TOPIC = strtok(ser_data, " "); /* data comes in from arduino as "/DHN/<network #>/<node id>/<topic name> <data>"; delim is space */
+    TOPIC = strtok(ser_data, " "); /* data comes in from arduino as "DHN/<network #>/<node id>/<topic name> <data>"; delim is space */
     if (TOPIC == NULL)
         return 0;
 
